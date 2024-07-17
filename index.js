@@ -30,6 +30,17 @@ for (let i = 0; i < dimensions; i++) {
 // setting up game status flag (win/loss, draw, running)
 let gameStatus = 0;
 // game
+function printBoard() {
+    let str = "";
+    for (let i = 0; i < dimensions; i++) {
+        for (let j = 0; j < dimensions; j++) {
+            str += gameboard[i][j];
+            str += "\t";
+        }
+        str += "\n";
+    }
+    console.log(str);
+}
 function fillBoard(symbol, r, c) {
     if (r >= dimensions || c >= dimensions || r < 0 || c < 0) {
         return false;
