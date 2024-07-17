@@ -123,6 +123,7 @@ const gamecontroller = (function() {
     function resetGame() {
         console.log("resetting game...")
         gameboard.reset();
+        resetDisplay();
         gameStatus = 0;
         currPlayer = players[0];
         init();
@@ -295,6 +296,7 @@ function runtests() {
 }
 // rendering
 const container = document.querySelector('#game-container');
+console.log(container);
 const n = gamecontroller.getDimensions();
 for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
@@ -312,4 +314,9 @@ for (let i = 0; i < n; i++) {
         });
         container.appendChild(item);
     }
+}
+function resetDisplay() {
+    container.querySelectorAll("div").forEach(item => {
+        item.innerHTML = "";
+    })
 }
