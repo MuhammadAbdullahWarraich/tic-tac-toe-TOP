@@ -1,4 +1,4 @@
-function GameboardFactory_onetime() {
+const gameboard = (function() {
     // ----------nested functions
     function CellFactory() {
         let value = null;
@@ -73,7 +73,7 @@ function GameboardFactory_onetime() {
         printBoard,
         reset
     }
-};
+})();
 function PlayerFactory(name, symbol) {
     const getName = () => name;
     const changeName = function(newName) {
@@ -86,10 +86,9 @@ function PlayerFactory(name, symbol) {
         getSymbol
     };
 }
-function GameControllerFactory_onetime() {
+const gamecontroller = (function() {
     //----------state
     let gameStatus = 0;
-    const gameboard = GameboardFactory_onetime();
     const dimensions = gameboard.getDimensions();
     const players = [
         PlayerFactory("player1", " x  "),
@@ -238,8 +237,7 @@ function GameControllerFactory_onetime() {
         if (diagonalWin === dimensions) return true;
         return false;
     }
-}
-const gamecontroller = GameControllerFactory_onetime();
+})();
 // tests
 function test1() {
     gamecontroller.playRound(0, 0);
