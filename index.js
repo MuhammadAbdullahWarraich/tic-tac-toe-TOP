@@ -50,7 +50,16 @@ function updateIfNeeded() {
 }
 function playRound(r, c) {
     fillBoard(currPlayer.getName(), r, c);
-    updateIfNeeded();
+    const flag = updateIfNeeded();
+    printBoard();
+    if (gameStatus === 1) {
+        console.log(`player ${currPlayer.getName()} wins!`);
+    } else if (gameStatus === 2) {
+        console.log("the game is drawed, its a tie!");
+    } else {
+        changeTurn();
+        printTurn();
+    }
 }
 function resetGame() {
 
