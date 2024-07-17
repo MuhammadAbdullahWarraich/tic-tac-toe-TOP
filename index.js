@@ -1,10 +1,3 @@
-// init
-function init() {
-    printBoard();
-    printTurn();
-    playRound();
-}
-init();
 // setting up players
 function Player(name, symbol) {
     this.name = name;
@@ -151,3 +144,10 @@ function checkDrawedGame() {
     }
     return true;
 }
+// init
+function init() {
+    printBoard();
+    printTurn();
+    playRound();
+}
+init();
