@@ -105,7 +105,7 @@ const gamecontroller = (function() {
     function playRound(r, c) {
         if (gameStatus !== 0) {
             console.log("game over! Reset to play again");
-            return;
+            return false;
         }
         let flag = false;
         flag = gameboard.fillValue(currPlayer.getSymbol(), r, c);
@@ -117,7 +117,9 @@ const gamecontroller = (function() {
         if (false === flag) {
             changeTurn();
             printRound();
+            return false;
         }
+        return true;
     }
     function resetGame() {
         console.log("resetting game...")
@@ -133,11 +135,19 @@ const gamecontroller = (function() {
         players[index].changeName(newName);
         return true;
     }
+    function getCurrPlayerSymbol() {
+        return currPlayer.getSymbol();
+    }
+    function getDimensions() {
+        return dimensions;
+    }
     //----------return statement for GameControllerFactory_onetime()
     return {
         playRound,
         resetGame,
-        changeName
+        changeName,
+        getCurrPlayerSymbol,
+        getDimensions
     };
     //----------private methods
     function changeTurn() {
@@ -283,4 +293,24 @@ function runtests() {
     console.log("------------------test3-------------------");
     console.log("--------------draw expected---------------");
     test3();
+}
+// rendering
+const container = document.querySelector('#game-container');
+const n = gamecontroller.getDimensions();
+for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+        const item = document.createElement('div');
+        item.id = `r${i}-c${j}`;
+        item.classList.add("game-item");
+        item.addEventListener('click', e => {
+            const itemId = e.target.id;
+            const [r, c] = itemId.match(/[\d]+/g).map(el => Number(el));
+            const symbol = gamecontroller.getCurrPlayerSymbol();
+            const flag = gamecontroller.playRound(r, c);
+            if (flag === false) return;
+            item.innerHTML = 
+            `<img src="./images/alpha-${symbol.trim()}.svg" class="game-symbol" />`;
+        });
+        container.appendChild(item);
+    }
 }
