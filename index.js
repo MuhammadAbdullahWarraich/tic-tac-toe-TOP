@@ -30,8 +30,16 @@ for (let i = 0; i < dimensions; i++) {
 // setting up game status flag (win/loss, draw, running)
 let gameStatus = 0;
 // game
-function playRound() {
-
+function fillBoard(symbol, r, c) {
+    if (r >= dimensions || c >= dimensions || r < 0 || c < 0) {
+        return false;
+    } else {
+        gameboard[r][c] = symbol;
+        return true;
+    }
+}
+function playRound(r, c) {
+    fillBoard(currPlayer.getName(), r, c);
 }
 function resetGame() {
 
