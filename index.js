@@ -55,3 +55,55 @@ function playRound(r, c) {
 function resetGame() {
 
 }
+function checkRowWin() {
+    for (let i = 0; i < dimensions; i++) {
+        let rowWin = 0;
+        for (let j = 0; j < dimensions; j++) {
+            if (gameboard[i][0] !== null && gameboard[i][j] === gameboard[i][0]) rowWin++;
+            else break;
+        }
+        if (rowWin === dimensions) return true;
+    }
+    return false;
+}
+function checkColWin() {
+    for (let j = 0; j < dimensions; j++) {
+        let colWin = 0;
+        for (let i = 0; i < dimensions; i++) {
+            if (gameboard[0][j] !== null && gameboard[i][j] === gameboard[0][j]) colWin++;
+            else break;
+        }
+        if (colWin === dimensions) return true;
+    }
+    return false;
+}
+function checkDiagonalWin() {
+    return checkBDiagonalWin() || checkFDiagonalWin();
+}
+function checkBDiagonalWin() {
+    let diagonalWin = 0;
+    for (let i = 0, j = dimensions-1; i < dimensions; i++, j--) {
+        if (gameboard[0][dimensions-1] !== null && gameboard[i][j] === gameboard[0][dimensions-1]) diagonalWin++;
+        else break;
+    }
+    if (diagonalWin === dimensions) return true;
+    return false;
+}
+function checkFDiagonalWin() {
+    let diagonalWin = 0;
+    for (let i = 0, j = 0; i < dimensions; i++, j++) {
+        if (gameboard[0][0] !== null && gameboard[i][j] === gameboard[0][0]) diagonalWin++;
+        else break;
+    }
+    if (diagonalWin === dimensions) return true;
+    return false;
+}
+function checkDrawedGame() {
+    // WARNING: only run this function after confirming that all win conditions have failed
+    for (let i = 0; i < dimensions; i++) {
+        for (let j = 0; j < dimensions; j++) {
+            if (gameboard[i][j] === null) return false;
+        }
+    }
+    return true;
+}
