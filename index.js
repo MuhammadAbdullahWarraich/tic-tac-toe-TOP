@@ -14,8 +14,8 @@ Player.prototype.getSymbol = function() {
     return this.symbol;
 }
 const players = [
-    new Player("player1", "x"),
-    new Player("player2", "o"),
+    new Player("player1", " x  "),
+    new Player("player2", " o  "),
 ];
 let currPlayer = players[0];
 // setting up game board
