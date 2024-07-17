@@ -38,8 +38,19 @@ function fillBoard(symbol, r, c) {
         return true;
     }
 }
+function updateIfNeeded() {
+    if (checkRowWin() || checkColWin() || checkDiagonalWin()) {
+        gameStatus = 1;
+        return true;
+    } else if (checkDrawedGame()) {
+        gameStatus = 2;
+        return true;
+    }
+    return false;
+}
 function playRound(r, c) {
     fillBoard(currPlayer.getName(), r, c);
+    updateIfNeeded();
 }
 function resetGame() {
 
