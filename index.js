@@ -72,6 +72,12 @@ function playRound(r, c) {
         printTurn();
     }
 }
+function changeTurn() {
+    currPlayer = currPlayer === players[0] ? players[1] : players[0];
+}
+function printTurn() {
+    console.log(`it is player ${currPlayer.getName()}'s turn`);
+}
 function resetGame() {
 
 }
