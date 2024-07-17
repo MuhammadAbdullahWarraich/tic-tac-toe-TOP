@@ -63,7 +63,7 @@ function playRound(r, c) {
     if (gameStatus !== 0) {
         console.log("game is over, reset to play again!");
     }
-    fillBoard(currPlayer.getName(), r, c);
+    fillBoard(currPlayer.getSymbol(), r, c);
     const flag = updateIfNeeded();
     printBoard();
     if (gameStatus === 1) {
