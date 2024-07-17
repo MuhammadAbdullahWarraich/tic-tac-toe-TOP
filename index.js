@@ -148,6 +148,51 @@ function checkDrawedGame() {
 function init() {
     printBoard();
     printTurn();
-    playRound();
 }
 init();
+
+function test1() {
+    playRound(0, 0);
+    playRound(0, 1);
+    playRound(1, 1);
+    playRound(1, 2);
+    playRound(2, 2);
+    // result must be a win for player1
+}
+function test2() {
+    playRound(0, 1);
+    playRound(0, 0);
+    playRound(0, 2);
+    playRound(1, 1);
+    playRound(1, 0);
+    playRound(2, 2);
+    // result must be a win for player2
+}
+function test3() {
+    playRound(1, 1);
+    playRound(1, 0);
+    playRound(2, 2);
+    playRound(0, 0);
+    playRound(2, 0);
+    playRound(2, 1);
+    playRound(1, 2);
+    playRound(0, 2);
+    playRound(0, 1);
+    // result must be a draw
+}
+function runtests() {
+    console.log("------------------------------------------");
+    console.log("------------------test1-------------------");
+    console.log("--------win for player 1 expected---------");
+    test1();
+    resetGame();
+    console.log("------------------------------------------");
+    console.log("------------------test2-------------------");
+    console.log("--------win for player 2 expected---------");
+    test2();
+    resetGame();
+    console.log("------------------------------------------");
+    console.log("------------------test3-------------------");
+    console.log("--------------draw expected---------------");
+    test3();
+}
