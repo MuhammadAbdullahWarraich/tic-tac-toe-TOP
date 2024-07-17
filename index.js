@@ -117,7 +117,6 @@ const gamecontroller = (function() {
         if (false === flag) {
             changeTurn();
             printRound();
-            return false;
         }
         return true;
     }
