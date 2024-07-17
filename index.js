@@ -64,6 +64,9 @@ function updateIfNeeded() {
     return false;
 }
 function playRound(r, c) {
+    if (gameStatus !== 0) {
+        console.log("game is over, reset to play again!");
+    }
     fillBoard(currPlayer.getName(), r, c);
     const flag = updateIfNeeded();
     printBoard();
@@ -83,7 +86,15 @@ function printTurn() {
     console.log(`it is player ${currPlayer.getName()}'s turn`);
 }
 function resetGame() {
-
+    gameStatus = 0;
+    for (let i = 0; i < dimensions; i++) {
+        for (let j = 0; j < dimensions; j++) {
+            gameboard[i][j] = null;
+        }
+    }
+    currPlayer = players[0];
+    console.log("Game Started");
+    init();
 }
 function checkRowWin() {
     for (let i = 0; i < dimensions; i++) {
