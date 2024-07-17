@@ -1,3 +1,7 @@
+// init
+printBoard();
+printTurn();
+playRound();
 // setting up players
 function Player(name, symbol) {
     this.name = name;
