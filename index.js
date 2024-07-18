@@ -296,7 +296,6 @@ function runtests() {
 }
 // rendering
 const container = document.querySelector('#game-container');
-console.log(container);
 const n = gamecontroller.getDimensions();
 for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
@@ -320,3 +319,7 @@ function resetDisplay() {
         item.innerHTML = "";
     })
 }
+const resetButton = document.querySelector('#reset-game');
+resetButton.addEventListener('click', () => {
+    gamecontroller.resetGame();
+});
