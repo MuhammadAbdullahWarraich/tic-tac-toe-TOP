@@ -7,8 +7,51 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <button id="reset-game">Reset Game</button>
-    <div id="game-container"></div>
+    <div class="container">
+      <header>Tic Tac Toe</header>
+      <main>
+        <div id="match-result"></div>
+        <div id="players-panel">
+          <span class="curr-name 1" style="padding-right: 5px">player1</span
+          >(Player 1)
+          <div style="padding: 0px 10px">VS</div>
+          <span class="curr-name 2" style="padding-right: 5px">player2</span
+          >(Player 2)
+        </div>
+        <form id="change-name-form">
+          <div class="form-control">
+            <label for="new-name">New Name</label
+            ><input type="text" name="new-name" id="new-name" />
+          </div>
+          <div class="form-control">
+            <p>Change name of:</p>
+            <ul>
+              <li>
+                <input required type="radio" name="player" id="player1" /><label
+                  for="player1"
+                  >Player 1 ('<span class="curr-name 1">player1</span>')</label
+                >
+              </li>
+              <li>
+                <input type="radio" name="player" id="player2" /><label
+                  for="player2"
+                  >Player 2 ('<span class="curr-name 2">player2</span>')</label
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="form-control">
+            <button type="submit">Change it!</button>
+            <button type="reset">Clear Form</button>
+          </div>
+        </form>
+        <div id="game-actions">
+          <button id="reset-game">Reset Game</button>
+          <button class="change-name-button">Change Names</button>
+        </div>
+        <div id="game-container"></div>
+      </main>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
