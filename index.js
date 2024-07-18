@@ -135,19 +135,23 @@ const gamecontroller = (function() {
         players[index].changeName(newName);
         return true;
     }
-    function getCurrPlayerSymbol() {
-        return currPlayer.getSymbol();
+    function getCurrPlayer() {
+        return currPlayer;
     }
     function getDimensions() {
         return dimensions;
+    }
+    function getGameStatus() {
+        return gameStatus;
     }
     //----------return statement for GameControllerFactory_onetime()
     return {
         playRound,
         resetGame,
         changeName,
-        getCurrPlayerSymbol,
-        getDimensions
+        getCurrPlayer,
+        getDimensions,
+        getGameStatus
     };
     //----------private methods
     function changeTurn() {
@@ -296,6 +300,7 @@ function runtests() {
 }
 // rendering
 const container = document.querySelector('#game-container');
+const matchResult = document.querySelector('#match-result');
 const n = gamecontroller.getDimensions();
 for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
@@ -305,11 +310,19 @@ for (let i = 0; i < n; i++) {
         item.addEventListener('click', e => {
             const itemId = e.target.id;
             const [r, c] = itemId.match(/[\d]+/g).map(el => Number(el));
-            const symbol = gamecontroller.getCurrPlayerSymbol();
+            const currPlayer = gamecontroller.getCurrPlayer();
+            const symbol = currPlayer.getSymbol();
             const flag = gamecontroller.playRound(r, c);
             if (flag === false) return;
             item.innerHTML = 
             `<img src="./images/alpha-${symbol.trim()}.svg" class="game-symbol" />`;
+            const gameStatus = gamecontroller.getGameStatus();
+            if (gameStatus === 0) return;
+            if (gameStatus === 1) {
+                matchResult.textContent = `${currPlayer.getName()} wins!`;
+            } else {
+                matchResult.textContent = 'The game is drawed, its a tie!';
+            }
         });
         container.appendChild(item);
     }
@@ -318,6 +331,7 @@ function resetDisplay() {
     container.querySelectorAll("div").forEach(item => {
         item.innerHTML = "";
     })
+    matchResult.textContent = "";
 }
 const resetButton = document.querySelector('#reset-game');
 resetButton.addEventListener('click', () => {
