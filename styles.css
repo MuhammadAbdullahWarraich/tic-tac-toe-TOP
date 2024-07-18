@@ -60,11 +60,37 @@ h6 {
 #__next {
   isolation: isolate;
 }
+* {
+  padding: 0px;
+  font-family: "Courier New", Courier, monospace;
+}
+header,
+#game-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header,
+#players-panel,
+#game-actions {
+  padding: 20px 0px;
+  background-color: darkblue;
+  color: white;
+}
+#game-actions > button {
+  background-color: white;
+  color: darkgreen;
+  outline: none;
+  border: none;
+  padding: 8px 40px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  display: block;
+}
 #game-container {
   display: grid;
   grid: repeat(3, 1fr) / repeat(3, 1fr);
-  --dimensions: max(320px, min(80vh, 80vw));
-  width: var(--dimensions);
   height: var(--dimensions);
   gap: 20px;
   background-color: blue;
@@ -75,4 +101,44 @@ h6 {
 .game-symbol {
   height: 100%;
   width: 100%;
+}
+main > form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(320px, 25vw);
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.4);
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 10px;
+  outline: 1px solid black;
+  opacity: 0;
+  z-index: -1;
+}
+body {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.container {
+  --dimensions: max(320px, min(80vh, 80vw));
+  width: var(--dimensions);
+}
+main {
+  display: grid;
+}
+#game-container {
+  justify-self: stretch;
+}
+#players-panel {
+  text-align: center;
+}
+#game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
