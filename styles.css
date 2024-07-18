@@ -142,3 +142,7 @@ main {
   flex-wrap: wrap;
   gap: 20px;
 }
+.is-open {
+  opacity: 1;
+  z-index: 10;
+}

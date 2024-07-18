@@ -323,3 +323,12 @@ const resetButton = document.querySelector('#reset-game');
 resetButton.addEventListener('click', () => {
     gamecontroller.resetGame();
 });
+const nameChangeForm = document.querySelector('#change-name-form');
+const openNameChangeForm = document.querySelector('#open-change-name-form-button');
+const closeNameChangeForm = document.querySelector('#close-change-name-form-button');
+openNameChangeForm.addEventListener('click', () => {
+    nameChangeForm.classList.add("is-open");
+});
+closeNameChangeForm.addEventListener('click', () => {
+    nameChangeForm.classList.remove('is-open');
+})

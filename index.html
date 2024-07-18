@@ -19,6 +19,14 @@
           >(Player 2)
         </div>
         <form id="change-name-form">
+          <div class="form-control close-form">
+            <div>
+              <button id="close-change-name-form-button" type="button">
+                &cross;
+              </button>
+            </div>
+          </div>
+          <h3>Change Name</h3>
           <div class="form-control">
             <label for="new-name">New Name</label
             ><input type="text" name="new-name" id="new-name" />
@@ -40,14 +48,14 @@
               </li>
             </ul>
           </div>
-          <div class="form-control">
+          <div class="form-control buttons">
             <button type="submit">Change it!</button>
             <button type="reset">Clear Form</button>
           </div>
         </form>
         <div id="game-actions">
           <button id="reset-game">Reset Game</button>
-          <button class="change-name-button">Change Names</button>
+          <button id="open-change-name-form-button">Change Names</button>
         </div>
         <div id="game-container"></div>
       </main>
