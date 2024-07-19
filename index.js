@@ -346,3 +346,21 @@ openNameChangeForm.addEventListener('click', () => {
 closeNameChangeForm.addEventListener('click', () => {
     nameChangeForm.classList.remove('is-open');
 })
+// form submission
+const playersPanel = document.querySelector('#players-panel');
+const playersPanelDisplay = playersPanel.querySelectorAll('.curr-name');
+nameChangeForm.addEventListener('submit', (e) => {
+    const tLen = e.target.length;
+    let newName, player;
+    for (let i = 0; i < tLen; i++) {
+        if (e.target[i].name === "new-name") {
+            newName = e.target[i].value;
+        } else if (e.target[i].name === "player" && e.target[i].checked === true) {
+            player = e.target[i].value;
+        }
+    }
+    gamecontroller.changeName(player-1, newName);
+    playersPanelDisplay[player-1].innerHTML = newName;
+    nameChangeForm.classList.remove('is-open');
+    e.preventDefault();
+});
